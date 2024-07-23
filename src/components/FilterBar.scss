@@ -1,0 +1,36 @@
+// src/components/FilterBar.scss
+
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 0.2rem;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.keyword-button {
+  padding: 0.5rem 1rem;
+  border: none;
+
+  border-radius: 0.5rem;
+  background-color: #c7b6e6;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 8px;
+
+  &:hover {
+    background-color: #d197e6;
+  }
+
+  &:focus {
+    outline: none;
+    background-color: #b774ee;
+  }
+
+  &:active {
+    background-color: #1d4ed8; /* Tailwind's blue-700 */
+  }
+}
