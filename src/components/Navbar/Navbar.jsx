@@ -8,6 +8,16 @@ import { images } from '../../constants';
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
 
+  // Define the external URLs for your portfolio sections
+  const externalLinks = {
+    home: 'https://my-porfolio-nine.vercel.app/home',
+    about: 'https://my-porfolio-nine.vercel.app/about',
+    work: 'https://my-porfolio-nine.vercel.app/work',
+    skills: 'https://my-porfolio-nine.vercel.app/skills',
+    archive: 'https://archive-phi-six.vercel.app/',
+    contact: 'https://my-porfolio-nine.vercel.app/contact',
+  };
+
   return (
     <nav className="app__navbar">
       <div className="app__navbar-logo">
@@ -18,7 +28,13 @@ const Navbar = () => {
           (item) => (
             <li className="app__flex p-text" key={`link-${item}`}>
               <div />
-              <a href={`#${item}`}>{item}</a>
+              <a
+                href={externalLinks[item]}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {item}
+              </a>
             </li>
           )
         )}
@@ -37,7 +53,12 @@ const Navbar = () => {
               {['home', 'about', 'work', 'skills', 'archive', 'contact'].map(
                 (item) => (
                   <li key={item}>
-                    <a href={`#${item}`} onClick={() => setToggle(false)}>
+                    <a
+                      href={externalLinks[item]}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => setToggle(false)}
+                    >
                       {item}
                     </a>
                   </li>
