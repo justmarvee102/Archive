@@ -18,7 +18,9 @@ const ThemeToggle = ({ toggleTheme, darkMode }) => {
         >
           {darkMode ? '☀️ ' : '  🌙'}
         </motion.button>
-        <button className=" text-gray-700 s-text">Tap icon</button>
+        <button className=" text-gray-600 dark:text-gray-900 s-text">
+          Tap icon
+        </button>
       </div>
     </>
   );
