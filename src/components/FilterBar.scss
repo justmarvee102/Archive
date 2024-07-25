@@ -14,23 +14,43 @@
 .keyword-button {
   padding: 0.5rem 1rem;
   border: none;
-
+  box-shadow: none; /* Default shadow */
   border-radius: 0.5rem;
-  background-color: #c7b6e6;
+  background-color: #e08e41;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.5s;
   margin-top: 8px;
 
   &:hover {
-    background-color: #d197e6;
+    background-color: #97a0e6;
   }
 
   &:focus {
     outline: none;
-    background-color: #b774ee;
+    background-color: #7061f6;
   }
 
   &:active {
-    background-color: #1d4ed8; /* Tailwind's blue-700 */
+    background-color: #8b36add8; /* Custom color */
   }
+}
+
+/* Dark mode styles */
+.dark .keyword-button {
+  background-color: #63a9ffe0;
+  box-shadow: 2px 2px 8px 1px rgba(206, 206, 206, 0.401); /* Dark mode shadow */
+  color: #d5d5d5;
+
+  &:hover {
+    box-shadow: 2px 2px 8px 1px rgba(255, 255, 255, 0.5); /* Dark mode shadow */
+  }
+  &:focus {
+    outline: none;
+    background-color: #2362a5;
+    box-shadow: 2px 4px 8px 1px rgba(255, 255, 255, 0.5); /* Dark mode shadow */
+  }
+
+  &:active {
+    background-color: #2257b1; /* Custom color */
+  } /* Darker background color for dark mode */
 }

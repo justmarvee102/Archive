@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Archive from './components/Archive';
 import { Navbar } from './components';
+
 import FilterBar from './components/FilterBar';
 import './App.scss';
 
@@ -183,7 +184,6 @@ const images = [
     src: 'unique.png',
     alt: 'Design 17',
     keywords: ['Poster', 'Motivational', 'All'],
-    style: { borderRadius: '20px' },
   },
   { src: 'Edit.png', alt: 'Design 17', keywords: ['Photoshop'] },
   { src: 'be.png', alt: 'Design 17', keywords: ['Photoshop', 'All'] },
@@ -200,7 +200,7 @@ const images = [
   {
     src: 'lion2.png',
     alt: 'Design 17',
-    keywords: ['Logo', 'Dark Background'],
+    keywords: ['Logo'],
   },
   {
     src: 'lion3.png',
@@ -220,12 +220,26 @@ const images = [
   {
     src: 'lion6.png',
     alt: 'Design 17',
-    keywords: ['Logo', 'Dark Background', 'All'],
+    keywords: ['Logo', 'All'],
   },
 ];
 
 const App = () => {
   const [selectedKeyword, setSelectedKeyword] = useState('');
+
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
+
+  const toggleTheme = () => {
+    setDarkMode((prevMode) => !prevMode);
+  };
 
   const filteredImages = selectedKeyword
     ? images.filter((image) => image.keywords.includes(selectedKeyword))
@@ -250,6 +264,7 @@ const App = () => {
   return (
     <div className="app">
       <Navbar />
+
       <div className="header">
         <h1 className="text-4xl font-bold text-center mb-2 ">Archive</h1>
         <h2 className="mb-4 s-text px-7">
@@ -258,7 +273,24 @@ const App = () => {
         </h2>
       </div>
       <FilterBar keywords={keywords} setSelectedKeyword={setSelectedKeyword} />
-      <Archive images={filteredImages} />
+      <Archive
+        images={filteredImages}
+        toggleTheme={toggleTheme}
+        darkMode={darkMode}
+      />
+
+      <div className="copyright">
+        <p
+          className="p-text hover:scale-75
+        hover:cursor-pointer hover:rotate-2 px-8 py-0.3"
+        >
+          @2024, All rights reserved
+        </p>
+
+        <p className="p-text hover:scale-75 hover:bx-blue-500 hover:cursor-pointer hover:rotate-2 px-8 py-0.3">
+          Designed And Developed From Scratch By Marvy.
+        </p>
+      </div>
     </div>
   );
 };

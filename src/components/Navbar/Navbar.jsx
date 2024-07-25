@@ -1,12 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { HiMenuAlt4, HiX } from 'react-icons/hi';
 import { motion } from 'framer-motion';
 import './Navbar.scss';
+import ThemeToggle from '../ThemeToggle'; // Import the ThemeToggle component
 
 import { images } from '../../constants';
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
+
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
+
+  const toggleTheme = () => {
+    setDarkMode((prevMode) => !prevMode);
+  };
 
   // Define the external URLs for your portfolio sections
   const externalLinks = {
@@ -20,8 +35,8 @@ const Navbar = () => {
 
   return (
     <nav className="app__navbar">
-      <div className="app__navbar-logo">
-        <img src={images.logo} alt="logo" />
+      <div className="app__navbar-logo ">
+        <img src={darkMode ? images.logo1 : images.logo} alt="logo" />
       </div>
       <ul className="app__navbar-links">
         {['home', 'about', 'work', 'skills', 'archive', 'contact'].map(
@@ -39,7 +54,7 @@ const Navbar = () => {
           )
         )}
       </ul>
-
+      <ThemeToggle toggleTheme={toggleTheme} darkMode={darkMode} />
       <div className="app__navbar-menu">
         <HiMenuAlt4 onClick={() => setToggle(true)} />
 

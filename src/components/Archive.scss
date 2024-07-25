@@ -1,19 +1,23 @@
-// src/components/Archive.scss
-
+/* src/components/Archive.scss */
 .archive-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 1rem;
+
+  /* Add dark mode styles */
+  @apply dark:bg-gray-900 shadow-white;
 }
 
 .archive-item {
   display: block;
   width: 100%;
   height: auto;
+  @apply dark:bg-gray-900;
 }
 
 .header {
   padding-top: 120px;
+  @apply dark:text-white;
 }
 
 img {
